@@ -1,0 +1,27 @@
+{
+
+  "description": "Timer for task followup while working.",
+  "manifest_version": 2,
+  "name": "Work timer",
+  "version": "1.0",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/beastify",
+  "icons": {
+    "48": "icons/icon-48.png"
+  },
+
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/icon-32.png",
+    "theme_icons": [{
+        "light": "icons/icon-32-light.png",
+        "dark": "icons/icon-32.png",
+        "size": 32
+    }],
+    "default_title": "Work timer",
+    "default_popup": "popup/worktimer.html"
+  }
+}

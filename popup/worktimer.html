@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="pico.min.css"/>
+    <link rel="stylesheet" href="worktimer.css"/>
+  </head>
+
+  <body>
+    <script id="template" type="x-tmpl-mustache">
+      <table role="grid">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Description</th>
+            <th scope="col">Start</th>
+            <th scope="col">Stop</th>
+            <th scope="col">Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#entries}}
+            <tr data-index="{{ id }}">
+              <td><button type="button" value="delete" data-tooltip="Delete" data-placement="right">X</button></td>
+              <td><input type="text" data-name="desc" placeholder="Task description" value="{{ desc }}" /></td>
+              <td><input type="time" data-name="begin" value="{{ begin }}" /></td>
+              <td><input type="time" data-name="end" value="{{ end }}" /></td>
+              <td><kbd>{{ total }}</kbd></td>
+            </tr>
+          {{/entries}}
+
+          <tr>
+            <td></td>
+            <td><input type="text" data-name="currentDesc" placeholder="Task description" value="{{ currentDesc }}" /></td>
+            {{#currentTimer}}
+              <td><input type="time" data-name="currentTimer" value="{{ currentTimer }}" /></td>
+              <td><button type="button" value="stop">Stop</button></td>
+              <td><kbd data-name="current-total">{{ currentTotal }}</kbd></td>
+            {{/currentTimer}}
+            {{^currentTimer}}
+              <td><button type="button" value="start">Start</button></td>
+              <td></td>
+              <td></td>
+            {{/currentTimer}}
+          </tr>
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td><kbd data-name="combined-total">{{ combinedTotal }}</kbd></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button disabled>Autofill</button>
+    </script>
+
+    <div id="popup-content">
+      <div class="flex">
+        <div><a href="#" role="button" class="date-prev"><</a></div>
+        <div class="flex-grow-5"><input type="date" id="date" required></div>
+        <div><a href="#" role="button" class="date-next">></a></div>
+      </div>
+
+      <div id="target">
+        <p aria-busy="true"></p>
+      </div>
+    </div>
+
+    <div id="error-content" class="hidden">
+      <p>Can't load work timer.</p>
+    </div>
+
+    <script src="mustache.js"></script> <!-- https://github.com/janl/mustache.js -->
+    <script src="worktimer.js"></script>
+  </body>
+</html>

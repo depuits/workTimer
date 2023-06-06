@@ -1,0 +1,35 @@
+html, body {
+  width: 575px;
+}
+
+.hidden {
+  display: none;
+}
+
+table tbody tr td {
+  padding: 0;
+}
+
+table tbody input,
+table tbody button,
+table tbody kbd {
+  font-size: .875em !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: .375rem .5rem !important;
+  line-height: initial !important;
+}
+
+.flex {
+  display: flex;
+  width: 100%;
+}
+
+.flex .flex-grow-5 {
+  flex-grow: 5;
+}
+
+button[value="delete"] {
+  border-color: #B00;
+  background-color: #D00;
+}
