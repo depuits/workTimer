@@ -3,6 +3,7 @@
 <html>
   <head>
     <meta charset="utf-8">
+    <title>workTimer</title>
     <link rel="stylesheet" href="pico.min.css"/>
     <link rel="stylesheet" href="worktimer.css"/>
   </head>
@@ -54,8 +55,6 @@
           </tr>
         </tbody>
       </table>
-
-      <button disabled>Autofill</button>
     </script>
 
     <div id="popup-content">
@@ -68,6 +67,9 @@
       <div id="target">
         <p aria-busy="true"></p>
       </div>
+
+      <a href="#" role="button" class="popout secondary outline">Popout</a>
+      <a href="#" role="button" class="export secondary outline">Export</a>
     </div>
 
     <div id="error-content" class="hidden">

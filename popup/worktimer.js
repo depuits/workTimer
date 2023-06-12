@@ -176,6 +176,10 @@ setInterval(() => {
 // add listeners for time fields
 // focusout  because blur does not bubble up
 document.addEventListener('focusout', (e) => {
+  if (e.target.id == 'date') {
+    render();
+  }
+
   const action = e.target.getAttribute('data-name');
   if (!action) {
     return;
@@ -216,9 +220,30 @@ document.addEventListener('focusout', (e) => {
   }
 });
 
+function saveDataToFile(data, name) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], {
+    type: "application/json"
+  }));
+  a.setAttribute("download", `${name || 'export'}.json`);
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
 
 // add click handlers
 document.addEventListener("click", (e) => {
+  if (e.target.classList.contains('popout')) {
+    openNewWindow();
+    return;
+  }
+
+  if (e.target.classList.contains('export')) {
+    const day = getCurrentDay();
+    saveDataToFile(day, dateEl.value);
+    return;
+  }
+
   // dat browse actions
   if (e.target.classList.contains('date-next')) {
     addDays(1);
@@ -275,6 +300,17 @@ document.addEventListener("click", (e) => {
 initialize()
   .then(() => console.log('init done'))
   .catch(reportExecuteScriptError);
+
+async function openNewWindow() {
+  let popupURL = browser.extension.getURL("popup/worktimer.html");
+
+  const windowInfo = await browser.windows.create({
+    url: popupURL,
+    type: "popup",
+    height: 400,
+    width: 595,
+  });
+}
 
 /**
  * There was an error executing the script.
