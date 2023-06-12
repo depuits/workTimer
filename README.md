@@ -24,5 +24,5 @@ web-ext sign --api-key=<JWT issuer> --api-secret=<JWT secret>
 
 Started from [beastify demo](https://github.com/mdn/webextensions-examples/tree/main/beastify) and made with:
 
-* [Pico.css](https://picocss.com/docs/buttons.html)
+* [Pico.css](https://picocss.com)
 * [Mustache.js](https://github.com/janl/mustache.js)
