@@ -138,8 +138,6 @@ function render() {
 
   view.combinedTotal = MsToFormatHoursMinutes(combinedTotalMs);
 
-  viewTargetEl.innerHTML = 'Loading...';
-
   console.log('rendering template');
   const rendered = Mustache.render(template, view);
   
@@ -163,11 +161,11 @@ setInterval(() => {
     });
 
     document.querySelectorAll('[data-name="current-total"]').forEach((el) => {
-      el.innerHTML = MsToFormatHoursMinutes(totalMs);
+      el.innerText = MsToFormatHoursMinutes(totalMs);
     });
 
     document.querySelectorAll('[data-name="combined-total"]').forEach((el) => {
-      el.innerHTML = MsToFormatHoursMinutes(combinedTotalMs);
+      el.innerText = MsToFormatHoursMinutes(combinedTotalMs);
     });
 
   }
@@ -302,7 +300,7 @@ initialize()
   .catch(reportExecuteScriptError);
 
 async function openNewWindow() {
-  let popupURL = browser.extension.getURL("popup/worktimer.html");
+  let popupURL = browser.runtime.getURL("popup/worktimer.html");
 
   const windowInfo = await browser.windows.create({
     url: popupURL,

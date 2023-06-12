@@ -1,7 +1,7 @@
 {
 
   "description": "Timer for task followup while working.",
-  "manifest_version": 1,
+  "manifest_version": 2,
   "name": "workTimer",
   "version": "1.0",
   "homepage_url": "https://github.com/depuits/workTimer",
